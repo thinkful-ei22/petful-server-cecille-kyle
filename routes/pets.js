@@ -36,11 +36,12 @@ router.get('/dogs', (req, res, next) => {
 })
 
 router.delete('/cats/delete', (req, res, next) => {
-    catsArray.pop();
+    catQueue.dequeue();
     return res.sendStatus(204);
 })
 
 router.delete('/dogs/delete', (req, res, next) => {
+    dogQueue.dequeue();
     return res.sendStatus(204);
 })
 

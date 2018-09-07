@@ -53,7 +53,7 @@ class Queue {
     }
 
     peek() {
-      return this.last;
+      return this.first;
     }
 }
 
