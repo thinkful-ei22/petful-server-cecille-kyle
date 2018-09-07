@@ -10,8 +10,6 @@ const petsRouter = require('./routes/pets.js');
 
 const app = express();
 
-app.use('/api', petsRouter);
-
 app.use(
   morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
     skip: (req, res) => process.env.NODE_ENV === 'test'
@@ -23,6 +21,8 @@ app.use(
     origin: CLIENT_ORIGIN
   })
 );
+
+app.use('/api', petsRouter);
 
 function runServer(port = PORT) {
   const server = app
