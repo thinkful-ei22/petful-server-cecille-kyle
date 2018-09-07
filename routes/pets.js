@@ -10,6 +10,15 @@ const catsArray = [
         age: 2,
         breed: 'Bengal',
         story: 'Thrown on the street'
+    },
+    {
+        imageURL: 'http://www.testcat1imageURL.com/',
+        imageDescription: 'Test Cat 1 Description',
+        name: 'TestCat1',
+        sex: 'TestSex1',
+        age: 1,
+        breed: 'TestBreed1',
+        story: 'TestStory1'
     }
 ];
 
@@ -22,6 +31,15 @@ const dogsArray = [
       age: 3,
       breed: 'Golden Retriever',
       story: 'Owner Passed away'
+  },
+  {
+      imageURL: 'http://www.testdog2imageURL.com/',
+      imageDescription: 'Test Dog 1 Description',
+      name: 'TestDog1',
+      sex: 'TestSex1',
+      age: 1,
+      breed: 'TestBreed1',
+      story: 'TestStory1'
   }
 ];
 
@@ -33,6 +51,15 @@ router.get('/cats', (req, res, next) => {
 
 router.get('/dogs', (req, res, next) => {
     return res.json(dogsArray[0]);
+})
+
+router.delete('/cats/delete', (req, res, next) => {
+    catsArray.pop();
+    return res.sendStatus(204);
+})
+
+router.delete('/dogs/delete', (req, res, next) => {
+    return res.sendStatus(204);
 })
 
 module.exports = router;
