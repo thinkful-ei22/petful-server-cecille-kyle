@@ -10,6 +10,7 @@ class Queue {
     constructor() {
         this.first = null;
         this.last = null;
+    }
 
     dequeue() {
         //if the queue is empty, there is nothing to return
@@ -36,3 +37,5 @@ class Queue {
       return this.last.data;
     }
 }
+
+module.exports = { _Node, Queue }
