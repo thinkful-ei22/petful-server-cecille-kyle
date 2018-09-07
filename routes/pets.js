@@ -68,21 +68,23 @@ dogQueue.enqueue({
 router.use(express.json());
 
 router.get('/cats', (req, res, next) => {
-    return res.json(catQueue.peek());
+  return res.json(catQueue.peek());
 });
 
 router.get('/dogs', (req, res, next) => {
-    return res.json(dogQueue.peek());
-})
+  return res.json(dogQueue.peek());
+});
 
 router.delete('/cats', (req, res, next) => {
-    catQueue.dequeue();
-    return res.sendStatus(204);
-})
+  const cat = catQueue.dequeue();
+  catQueue.enqueue(cat);
+  return res.sendStatus(204);
+});
 
 router.delete('/dogs', (req, res, next) => {
-    dogQueue.dequeue();
-    return res.sendStatus(204);
-})
+  const dog = dogQueue.dequeue();
+  dogQueue.enqueue(dog);
+  return res.sendStatus(204);
+});
 
 module.exports = router;
